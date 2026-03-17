@@ -1,0 +1,2270 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pharmacy Plus - اطلب أدويتك بسهولة ويوصلك لحد البيت. صيدلية أونلاين موثوقة للتوصيل السريع">
+    <meta name="keywords" content="pharmacy, online pharmacy, medicine delivery, صيدلية, أدوية, توصيل">
+    <title>Pharmacy Plus | صيدلية بلس - طلب الأدوية أونلاين</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ============================================
+           CSS Variables & Root Styles
+        ============================================ */
+        :root {
+            /* Primary Colors - Medical/Pharmacy Palette */
+            --primary-green: #2E7D32;
+            --primary-green-light: #4CAF50;
+            --primary-green-dark: #1B5E20;
+            --primary-blue: #1976D2;
+            --primary-blue-light: #42A5F5;
+            
+            /* Secondary Colors */
+            --white: #FFFFFF;
+            --off-white: #F8FAF8;
+            --light-gray: #F5F5F5;
+            --medium-gray: #E0E0E0;
+            --dark-gray: #616161;
+            --text-dark: #212121;
+            --text-light: #757575;
+            
+            /* Accent Colors */
+            --whatsapp-green: #25D366;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.16);
+            --shadow-xl: 0 12px 48px rgba(0,0,0,0.20);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 50%;
+        }
+        
+        /* ============================================
+           Reset & Base Styles
+        ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-family: inherit;
+        }
+        
+        /* ============================================
+           Animations
+        ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Animation Classes */
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .animate-fade-down {
+            animation: fadeInDown 0.6s ease forwards;
+        }
+        
+        .animate-scale {
+            animation: scaleIn 0.5s ease forwards;
+        }
+        
+        .animate-delay-1 { animation-delay: 0.1s; }
+        .animate-delay-2 { animation-delay: 0.2s; }
+        .animate-delay-3 { animation-delay: 0.3s; }
+        .animate-delay-4 { animation-delay: 0.4s; }
+        .animate-delay-5 { animation-delay: 0.5s; }
+        
+        /* ============================================
+           Header & Navigation
+        ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-normal);
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(10deg) scale(1.05);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            line-height: 1.2;
+        }
+        
+        .logo-tagline {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .nav-link {
+            position: relative;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 8px 0;
+            transition: color var(--transition-fast);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-green-light));
+            border-radius: 2px;
+            transition: width var(--transition-normal);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-green);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp-green), #128C7E);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+            background: transparent;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: all var(--transition-normal);
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        /* ============================================
+           Hero Section
+        ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, var(--off-white) 0%, #E8F5E9 100%);
+            overflow: hidden;
+        }
+        
+        .hero-bg-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: var(--radius-full);
+            opacity: 0.1;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-green);
+            top: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-blue);
+            bottom: -50px;
+            right: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: var(--primary-green-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(46, 125, 50, 0.1);
+            border-radius: var(--radius-full);
+            color: var(--primary-green);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero-badge i {
+            font-size: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .hero-title span {
+            color: var(--primary-green);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+            animation-delay: 0.3s;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hero-floating-card {
+            position: absolute;
+            background: var(--white);
+            padding: 16px 20px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .hero-floating-card.card-1 {
+            top: 20%;
+            left: -40px;
+        }
+        
+        .hero-floating-card.card-2 {
+            bottom: 20%;
+            right: -40px;
+            animation-delay: 1.5s;
+        }
+        
+        .floating-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .floating-icon.green {
+            background: rgba(46, 125, 50, 0.1);
+            color: var(--primary-green);
+        }
+        
+        .floating-icon.blue {
+            background: rgba(25, 118, 210, 0.1);
+            color: var(--primary-blue);
+        }
+        
+        .floating-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .floating-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .floating-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        
+        /* ============================================
+           Products Section
+        ============================================ */
+        .products {
+            padding: 100px 20px;
+            background: var(--white);
+        }
+        
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(46, 125, 50, 0.1);
+            border-radius: var(--radius-full);
+            color: var(--primary-green);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        
+        .section-title span {
+            color: var(--primary-green);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .product-badge.new {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+        
+        .product-badge.sale {
+            background: var(--danger);
+            color: var(--white);
+        }
+        
+        .product-image {
+            position: relative;
+            height: 200px;
+            background: var(--light-gray);
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .quick-view-btn {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all var(--transition-normal);
+        }
+        
+        .product-card:hover .quick-view-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-category {
+            font-size: 0.75rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .current-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+        
+        .original-price {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-actions .btn {
+            flex: 1;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+        }
+        
+        /* ============================================
+           Features Section
+        ============================================ */
+        .features {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .features .section-header {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .features .section-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+        
+        .features .section-title {
+            color: var(--white);
+        }
+        
+        .features .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all var(--transition-normal);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-green);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-normal);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        
+        .feature-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        /* ============================================
+           Testimonials Section
+        ============================================ */
+        .testimonials {
+            padding: 100px 20px;
+            background: var(--off-white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        .testimonial-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+        
+        .testimonial-stars i {
+            color: #FFD700;
+            font-size: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .author-name {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .author-role {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        /* ============================================
+           CTA Section
+        ============================================ */
+        .cta {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+        
+        .cta .btn-whatsapp {
+            font-size: 1.1rem;
+            padding: 16px 40px;
+        }
+        
+        /* ============================================
+           Footer
+        ============================================ */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 80px 20px 30px;
+        }
+        
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-brand .logo-icon {
+            background: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        
+        .footer-brand .logo-name {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .footer-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+            transition: all var(--transition-normal);
+        }
+        
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-green);
+            padding-right: 5px;
+        }
+        
+        .footer-link i {
+            font-size: 0.75rem;
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-contact-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            flex-shrink: 0;
+        }
+        
+        .footer-contact-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer-contact-text strong {
+            color: var(--white);
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        .footer-copyright a {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+        
+        /* ============================================
+           WhatsApp Floating Button
+        ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-green);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.75rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all var(--transition-normal);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            left: 70px;
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 10px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ============================================
+           Responsive Design
+        ============================================ */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content {
+                order: 2;
+            }
+            
+            .hero-image {
+                order: 1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .hero-actions {
+                justify-content: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-floating-card {
+                display: none;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: all var(--transition-normal);
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .header-container {
+                height: 70px;
+            }
+            
+            .logo-name {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+                width: 55px;
+                height: 55px;
+            }
+        }
+        
+        /* ============================================
+           Utility Classes
+        ============================================ */
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-left { text-align: left; }
+        
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+        
+        .hidden { display: none; }
+        .visible { display: block; }
+    </style>
+</head>
+<body>
+    <!-- ============================================
+         Header
+    ============================================ -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Pharmacy Plus</span>
+                    <span class="logo-tagline">صيدلية بلس</span>
+                </div>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">الرئيسية</a>
+                <a href="#products" class="nav-link">المنتجات</a>
+                <a href="#features" class="nav-link">المميزات</a>
+                <a href="#contact" class="nav-link">تواصل معنا</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="https://wa.me/201033496278?text=مرحباً، أريد الاستفسار عن خدماتكم" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الآن
+                </a>
+            </div>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================
+         Hero Section
+    ============================================ -->
+    <section class="hero" id="home">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    صيدلية موثوقة ومرخصة
+                </div>
+                
+                <h1 class="hero-title">
+                    Order Your Medicine Online <span>بسهولة</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    اطلب أدويتك بسهولة ويوصلك لحد البيت - خدمة توصيل سريعة وموثوقة لجميع الأدوية والمنتجات الطبية
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        تصفح المنتجات
+                    </a>
+                    <a href="https://wa.me/201033496278" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">+5000</div>
+                        <div class="stat-label">عميل سعيد</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">+1000</div>
+                        <div class="stat-label">منتج متوفر</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">خدمة متواصلة</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="images/hero-bg.png" alt="Modern Pharmacy">
+                
+                <div class="hero-floating-card card-1">
+                    <div class="floating-icon green">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="floating-text">
+                        <span class="floating-title">توصيل سريع</span>
+                        <span class="floating-subtitle">خلال ساعات</span>
+                    </div>
+                </div>
+                
+                <div class="hero-floating-card card-2">
+                    <div class="floating-icon blue">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="floating-text">
+                        <span class="floating-title">دعم 24/7</span>
+                        <span class="floating-subtitle">متاح دائماً</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Products Section
+    ============================================ -->
+    <section class="products" id="products">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-pills"></i>
+                    منتجاتنا
+                </div>
+                <h2 class="section-title">منتجات <span>متنوعة</span> وعالية الجودة</h2>
+                <p class="section-subtitle">
+                    نقدم لكم مجموعة واسعة من الأدوية والمنتجات الصحية بأسعار منافسة وجودة مضمونة
+                </p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1: Panadol -->
+                <div class="product-card">
+                    <div class="product-badge new">جديد</div>
+                    <div class="product-image">
+                        <img src="images/panadol.png" alt="Panadol">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مسكنات</span>
+                        <h3 class="product-name">بانادول - Panadol</h3>
+                        <div class="product-price">
+                            <span class="current-price">25 ج.م</span>
+                            <span class="original-price">30 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: بانادول - Panadol" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2: Vitamin C -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/vitamin-c.png" alt="Vitamin C">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">فيتامينات</span>
+                        <h3 class="product-name">فيتامين سي - Vitamin C</h3>
+                        <div class="product-price">
+                            <span class="current-price">85 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: فيتامين سي - Vitamin C" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3: Cold & Flu -->
+                <div class="product-card">
+                    <div class="product-badge sale">خصم 20%</div>
+                    <div class="product-image">
+                        <img src="images/cold-flu.png" alt="Cold & Flu Medicine">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">نزلات البرد</span>
+                        <h3 class="product-name">دواء البرد والإنفلونزا</h3>
+                        <div class="product-price">
+                            <span class="current-price">45 ج.م</span>
+                            <span class="original-price">55 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: دواء البرد والإنفلونزا" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4: Pain Relief Cream -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/pain-cream.png" alt="Pain Relief Cream">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مراهم</span>
+                        <h3 class="product-name">كريم مسكن للألم</h3>
+                        <div class="product-price">
+                            <span class="current-price">65 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: كريم مسكن للألم" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5: Antibiotics -->
+                <div class="product-card">
+                    <div class="product-badge new">وصل حديثاً</div>
+                    <div class="product-image">
+                        <img src="images/antibiotics.png" alt="Antibiotics">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مضادات حيوية</span>
+                        <h3 class="product-name">مضاد حيوي واسع المفعول</h3>
+                        <div class="product-price">
+                            <span class="current-price">120 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: مضاد حيوي واسع المفعول" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6: Baby Care -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/baby-care.png" alt="Baby Care">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">العناية بالأطفال</span>
+                        <h3 class="product-name">مستلزمات العناية بالأطفال</h3>
+                        <div class="product-price">
+                            <span class="current-price">95 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: مستلزمات العناية بالأطفال" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7: Skincare -->
+                <div class="product-card">
+                    <div class="product-badge sale">عرض خاص</div>
+                    <div class="product-image">
+                        <img src="images/skincare.png" alt="Skincare">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">العناية بالبشرة</span>
+                        <h3 class="product-name">منتجات العناية بالبشرة</h3>
+                        <div class="product-price">
+                            <span class="current-price">150 ج.م</span>
+                            <span class="original-price">180 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: منتجات العناية بالبشرة" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8: Medical Supplies -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/medical-supplies.png" alt="Medical Supplies">
+                        <div class="product-overlay">
+                            <button class="quick-view-btn">
+                                <i class="fas fa-eye"></i> عرض سريع
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">مستلزمات طبية</span>
+                        <h3 class="product-name">مستلزمات طبية متعددة</h3>
+                        <div class="product-price">
+                            <span class="current-price">75 ج.م</span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="https://wa.me/201033496278?text=عاوز أطلب المنتج: مستلزمات طبية متعددة" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                اطلب الآن
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Features Section
+    ============================================ -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i>
+                    لماذا نحن
+                </div>
+                <h2 class="section-title">مميزات ت جعلنا الخيار الأول</h2>
+                <p class="section-subtitle">
+                    نسعى دائماً لتقديم أفضل خدمة لعملائنا الكرام
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">طلب سهل</h3>
+                    <p class="feature-description">
+                        اطلب أدويتك بكل سهولة عبر واتساب أو الهاتف في دقائق معدودة
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="feature-title">توصيل سريع</h3>
+                    <p class="feature-description">
+                        توصيل سريع لباب بيتك في أسرع وقت ممكن
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">متاح 24/7</h3>
+                    <p class="feature-description">
+                        خدمة متواصلة طوال اليوم وطوال الأسبوع لراحتك
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title">صيدلية موثوقة</h3>
+                    <p class="feature-description">
+                        صيدلية مرخصة ومعتمدة من وزارة الصحة المصرية
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Testimonials Section
+    ============================================ -->
+    <section class="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-comments"></i>
+                    آراء العملاء
+                </div>
+                <h2 class="section-title">ماذا يقول <span>عملاؤنا</span></h2>
+                <p class="section-subtitle">
+                    نفتخر بثقة عملائنا الكرام وآرائهم الإيجابية
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "خدمة ممتازة وسريعة جداً! طلبت الدواء ووصلي في نفس اليوم. شكراً Pharmacy Plus على الخدمة الرائعة."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">أ</div>
+                        <div class="author-info">
+                            <span class="author-name">أحمد محمد</span>
+                            <span class="author-role">عميل دائم</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "أسعار منافسة وجودة عالية. التعامل عبر واتساب سهل جداً والموظفين محترمين ومتعاونين. أنصح الجميع بالتعامل معاهم."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div class="author-info">
+                            <span class="author-name">سارة علي</span>
+                            <span class="author-role">عميلة جديدة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "أفضل صيدلية أونلاين تعاملت معاها! التوصيل سريع والأدوية أصلية ومضمونة. خدمة عملاء ممتازة."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div class="author-info">
+                            <span class="author-name">محمود حسن</span>
+                            <span class="author-role">عميل راضي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CTA Section
+    ============================================ -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">جاهز تطلب أدويتك؟</h2>
+            <p class="cta-subtitle">
+                تواصل معنا الآن عبر واتساب واحصل على خدمة توصيل سريعة وموثوقة
+            </p>
+            <a href="https://wa.me/201033496278?text=مرحباً، أريد طلب بعض الأدوية" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                تواصل معنا على واتساب
+            </a>
+        </div>
+    </section>
+
+    <!-- ============================================
+         Footer
+    ============================================ -->
+    <footer class="footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">Pharmacy Plus</span>
+                    </div>
+                </a>
+                <p class="footer-description">
+                    صيدلية بلس - صيدلية أونلاين موثوقة لتوصيل الأدوية والمنتجات الصحية لباب بيتك. نقدم خدمة سريعة وموثوقة على مدار الساعة.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/201033496278" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links-section">
+                <h4 class="footer-title">روابط سريعة</h4>
+                <div class="footer-links">
+                    <a href="#home" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        الرئيسية
+                    </a>
+                    <a href="#products" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        المنتجات
+                    </a>
+                    <a href="#features" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        المميزات
+                    </a>
+                    <a href="#contact" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-links-section">
+                <h4 class="footer-title">الأقسام</h4>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        الأدوية
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        الفيتامينات
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        العناية الشخصية
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-chevron-left"></i>
+                        مستلزمات الأطفال
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-contact">
+                <h4 class="footer-title">تواصل معنا</h4>
+                
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="footer-contact-text">
+                        <strong>رقم الهاتف</strong>
+                        01033496278
+                    </div>
+                </div>
+                
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="footer-contact-text">
+                        <strong>العنوان</strong>
+                        شارع التحرير، وسط البلد، القاهرة، مصر
+                    </div>
+                </div>
+                
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="footer-contact-text">
+                        <strong>ساعات العمل</strong>
+                        متاحون 24 ساعة - 7 أيام في الأسبوع
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                © 2024 Pharmacy Plus. جميع الحقوق محفوظة. تم التطوير بواسطة <a href="https://pharmacy.orcatech.online" target="_blank">OrcaTech</a>
+            </p>
+            <div class="footer-legal">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">الشروط والأحكام</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         WhatsApp Floating Button
+    ============================================ -->
+    <a href="https://wa.me/201033496278?text=مرحباً، أريد الاستفسار عن خدمات الصيدلية" target="_blank" class="whatsapp-float" aria-label="Contact on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">تواصل معنا</span>
+    </a>
+
+    <!-- ============================================
+         JavaScript
+    ============================================ -->
+    <script>
+        // ============================================
+        // Header Scroll Effect
+        // ============================================
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // Mobile Menu Toggle
+        // ============================================
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // Active Navigation Link
+        // ============================================
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ============================================
+        // Smooth Scroll for Anchor Links
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // Intersection Observer for Animations
+        // ============================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.product-card, .feature-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // ============================================
+        // Product Card Hover Effects
+        // ============================================
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.product-image img').style.transform = 'scale(1.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.product-image img').style.transform = 'scale(1)';
+            });
+        });
+
+        // ============================================
+        // Stats Counter Animation
+        // ============================================
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = '+' + Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = '+' + target;
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Observe stats section
+        const statsSection = document.querySelector('.hero-stats');
+        let statsAnimated = false;
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    statsAnimated = true;
+                    
+                    const statNumbers = document.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        if (text.includes('+')) {
+                            const number = parseInt(text.replace(/\D/g, ''));
+                            animateCounter(stat, number);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // ============================================
+        // WhatsApp URL Generator
+        // ============================================
+        function generateWhatsAppURL(productName) {
+            const phoneNumber = '201033496278';
+            const message = encodeURIComponent(`عاوز أطلب المنتج: ${productName}`);
+            return `https://wa.me/${phoneNumber}?text=${message}`;
+        }
+
+        // Update all WhatsApp links with proper encoding
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Track click event (for analytics if needed)
+                console.log('WhatsApp click tracked');
+            });
+        });
+
+        // ============================================
+        // Lazy Loading Images
+        // ============================================
+        if ('loading' in HTMLImageElement.prototype) {
+            document.querySelectorAll('img').forEach(img => {
+                img.loading = 'lazy';
+            });
+        } else {
+            // Fallback for older browsers
+            const lazyLoad = (target) => {
+                const io = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src || img.src;
+                            observer.disconnect();
+                        }
+                    });
+                });
+                io.observe(target);
+            };
+            
+            document.querySelectorAll('img').forEach(img => lazyLoad(img));
+        }
+
+        // ============================================
+        // Console Welcome Message
+        // ============================================
+        console.log('%c🏥 Pharmacy Plus', 'font-size: 24px; font-weight: bold; color: #2E7D32;');
+        console.log('%cDeveloped by OrcaTech', 'font-size: 14px; color: #1976D2;');
+        console.log('%chttps://pharmacy.orcatech.online', 'font-size: 12px; color: #666;');
+    </script>
+</body>
+</html>
